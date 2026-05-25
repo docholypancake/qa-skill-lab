@@ -1,0 +1,50 @@
+$kind: http-request
+url: "{{base_url}}/booking"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+        "firstname": "Jim",
+        "lastname": "Brown",
+        "totalprice": 111,
+        "depositpaid": true,
+        "bookingdates": {
+            "checkin": "2024-01-01",
+            "checkout": "2024-01-05"
+        },
+        "additionalneeds": "Breakfast"
+    }
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response contains bookingid", function () {
+          const body = pm.response.json();
+          pm.expect(body).to.have.property("bookingid");
+          pm.expect(body.bookingid).to.be.a("number").and.above(0);
+      });
+
+      pm.test("Booking data matches payload", function () {
+          const booking = pm.response.json().booking;
+          pm.expect(booking.firstname).to.equal("Jim");
+          pm.expect(booking.lastname).to.equal("Brown");
+          pm.expect(booking.totalprice).to.equal(111);
+          pm.expect(booking.depositpaid).to.equal(true);
+          pm.expect(booking.bookingdates.checkin).to.equal("2024-01-01");
+          pm.expect(booking.bookingdates.checkout).to.equal("2024-01-05");
+          pm.expect(booking.additionalneeds).to.equal("Breakfast");
+      });
+
+      // Save booking ID for use in read/update/delete requests
+      pm.environment.set("booking_id", pm.response.json().bookingid);
+    language: text/javascript
+order: 4000

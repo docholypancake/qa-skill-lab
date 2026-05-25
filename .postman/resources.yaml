@@ -1,0 +1,12 @@
+# Use this workspace to collaborate
+workspace:
+  id: 72531ef5-989e-4a0a-80c5-50c52409a3e4
+
+localResources:
+  docs:
+    - ../01-documentation/traceability-matrix.md
+    - ../docs/reflection-01.md
+    - ../01-documentation/test-plan.md
+    - ../01-documentation/test-cases.md
+    - ../docs/progress.md
+bug-report-template.md

@@ -1,0 +1,42 @@
+$kind: http-request
+url: "{{base_url}}/booking/{{booking_id}}"
+method: GET
+headers:
+  - key: Content-Type
+    value: application/json
+    disabled: true
+  - key: Accept
+    value: application/json
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response has all 6 fields", function () {
+          const body = pm.response.json();
+          pm.expect(body).to.have.property("firstname");
+          pm.expect(body).to.have.property("lastname");
+          pm.expect(body).to.have.property("totalprice");
+          pm.expect(body).to.have.property("depositpaid");
+          pm.expect(body).to.have.property("bookingdates");
+          pm.expect(body).to.have.property("additionalneeds");
+      });
+
+      pm.test("Response exactly matches booking payload from TC-RB-001", function () {
+          const body = pm.response.json();
+
+          pm.expect(body.firstname).to.eql("Jim");
+          pm.expect(body.lastname).to.eql("Brown");
+          pm.expect(body.totalprice).to.eql(111);
+          pm.expect(body.depositpaid).to.eql(true);
+          pm.expect(body.bookingdates).to.be.an("object");
+          pm.expect(body.bookingdates.checkin).to.eql("2024-01-01");
+          pm.expect(body.bookingdates.checkout).to.eql("2024-01-05");
+          pm.expect(body.additionalneeds).to.eql("Breakfast");
+      });
+    language: text/javascript
+order: 5000

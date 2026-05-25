@@ -1,0 +1,32 @@
+$kind: http-request
+url: "{{base_url}}/auth"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "username": "admin",
+        "password": "password123"
+    }
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Body contains token", function () {
+          const body = pm.response.json();
+          pm.expect(body).to.have.property("token");
+          pm.expect(body.token).to.be.a("string").and.not.empty;
+      });
+
+      // Save token to environment for later requests
+      const token = pm.response.json().token;
+      pm.environment.set("token", token);
+    language: text/javascript
+order: 3000

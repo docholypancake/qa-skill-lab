@@ -1,0 +1,35 @@
+$kind: http-request
+url: "{{base_url}}/booking/{{booking_id}}"
+method: PATCH
+headers:
+  Content-Type: application/json
+  Accept: application/json
+  Cookie: token={{token}}
+body:
+  type: json
+  content: '{"firstname": "Updated","totalprice": 999}'
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Patched fields changed", function () {
+          const body = pm.response.json();
+          pm.expect(body.firstname).to.equal("Updated");
+          pm.expect(body.totalprice).to.equal(999);
+      });
+
+      pm.test("Unpatched fields unchanged", function () {
+          const body = pm.response.json();
+          pm.expect(body.lastname).to.equal("Doe");
+          pm.expect(body.depositpaid).to.equal(false);
+          pm.expect(body.bookingdates.checkin).to.equal("2024-06-01");
+          pm.expect(body.bookingdates.checkout).to.equal("2024-06-07");
+          pm.expect(body.additionalneeds).to.equal("Lunch");
+      });
+    language: text/javascript
+order: 9000

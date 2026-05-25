@@ -1,0 +1,41 @@
+$kind: http-request
+url: "{{base_url}}/booking?firstname=Jim&lastname=Brown"
+method: GET
+headers:
+  - key: Content-Type
+    value: application/json
+    disabled: true
+  - key: Accept
+    value: application/json
+queryParams:
+  firstname: Jim
+  lastname: Brown
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response body is a JSON array", function() {
+          pm.response.to.be.json;
+      });
+
+      pm.test("Array contains at least one object with a `bookingid` field.", function(){
+          var jsonData = pm.response.json();
+          pm.expect(jsonData).to.have.lengthOf.at.least(1);
+      });
+
+      pm.test("The `bookingid` from TC-RB-001 is present in the array", function(){
+          var jsonData = pm.response.json();
+          var expectedBookingId = Number(pm.environment.get("booking_id"));
+          var bookingIds = jsonData.map(function(item) {
+              return item.bookingid;
+          });
+
+          pm.expect(bookingIds).to.include(expectedBookingId);
+      });
+    language: text/javascript
+order: 6000

@@ -62,8 +62,8 @@ A booking now exists with the returned `bookingid`. It should be removed in tear
 
 ```json
 {
-"username": "tester",
-"password": "wrongpassword"
+"username": "invalid",
+"password": "creds"
 }
 ```
 

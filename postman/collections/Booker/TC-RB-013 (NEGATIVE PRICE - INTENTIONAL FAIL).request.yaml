@@ -1,0 +1,22 @@
+$kind: http-request
+url: "{{base_url}}/booking"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: '{"firstname": "Test","lastname": "User","totalprice": -1,"depositpaid": true,"bookingdates": {"checkin": "2024-01-01","checkout": "2024-01-05"},"additionalneeds": ""}'
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      // INTENTIONAL FAILURE — documents defect: no input validation on totalprice
+      // Expected: 400 Bad Request
+      // Actual: 200 OK (API accepts negative price)
+      pm.test("[DEFECT] Status should be 400 — API accepts negative totalprice", function () {
+          pm.response.to.have.status(400);
+      });
+    language: text/javascript
+order: 13000

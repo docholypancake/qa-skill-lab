@@ -1,0 +1,19 @@
+$kind: http-request
+url: "{{base_url}}/booking/{{booking_id}}"
+method: PUT
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: '{"firstname": "Jane","lastname": "Doe","totalprice": 250,"depositpaid": false,"bookingdates": {"checkin": "2024-06-01","checkout": "2024-06-07"},"additionalneeds": "Lunch"}'
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 403", function () {
+          pm.response.to.have.status(403);
+      });
+    language: text/javascript
+order: 8000

@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{base_url}}/ping"
+method: GET
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 201", function () {
+          pm.response.to.have.status(201);
+      });
+
+      pm.test("Body is 'Created'", function () {
+          pm.expect(pm.response.text()).to.equal("Created");
+      });
+    language: text/javascript
+order: 1000

@@ -1,0 +1,29 @@
+$kind: http-request
+url: "{{base_url}}/auth"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"username": "invalid", "password": "creds"}'
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Body contains reason field", function () {
+          const body = pm.response.json();
+          pm.expect(body).to.have.property("reason");
+          pm.expect(body.reason).to.equal("Bad credentials");
+      });
+
+      pm.test("Body has no token field", function () {
+          const body = pm.response.json();
+          pm.expect(body).to.not.have.property("token");
+      });
+    language: text/javascript
+order: 2000
