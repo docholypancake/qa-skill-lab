@@ -20,10 +20,10 @@ Professional QA documentation following IEEE 829 and ISTQB terminology.
 
 ---
 
-### 🔄 02 — API Testing with Postman
-*(In progress)*
+### ✅ 02 — API Testing with Postman
+All 14 test cases executed via Postman Collection Runner and Newman CLI. 28 assertions, 26 pass, 2 intentional defect failures documenting known Restful-Booker input validation gaps.
 
-Postman collection with environment variables, `pm.test()` assertions, and Newman CLI runner. Test cases from Module 1 executed and results recorded.
+→ [View module](02-api-postman/README.md)
 
 ---
 

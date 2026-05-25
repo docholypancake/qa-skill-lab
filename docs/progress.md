@@ -9,24 +9,26 @@
 - [x] Defect filed (`BUG-RB-001.md`) — `POST /auth` returns 200 for bad credentials
 - [x] Module README (`01-documentation/README.md`)
 - [x] Reflection note (`docs/reflection-01.md`)
-- [ ] Manual execution of test cases (deferred — Module 2 Postman will execute and record results)
+- [x] Manual execution of test cases — executed via Postman Collection Runner (Module 2)
 
 **Skills demonstrated:** test plan writing, test case design (equivalence partitioning, BVA), assertion depth, RTM, defect reporting, severity/priority classification.
 
 ---
 
-## Module 02 — API Testing with Postman 🔄 In progress
+## Module 02 — API Testing with Postman ✅ Complete
 
-- [x] "booking" collection created in Postman
-- [x] `GET /ping` request added and executed
-- [x] `POST /auth` (invalid credentials) added and executed
-- [ ] Postman environment set up (`base_url`, `token`, `booking_id` variables)
-- [ ] All TC-RB-001 → TC-RB-014 implemented as requests with `pm.test()` assertions
-- [ ] Pre-request script for auth token (auto-fetch before protected requests)
-- [ ] Collection exported as v2.1 JSON and committed to `02-api-postman/`
-- [ ] Newman CLI run documented
-- [ ] Module README
-- [ ] Reflection note
+- [x] "Booker" collection created in Postman
+- [x] Postman environment set up (`base_url`, `token`, `booking_id` variables)
+- [x] All TC-RB-001 → TC-RB-014 implemented as requests with `pm.test()` assertions
+- [x] Data chaining: TC-RB-001 saves `booking_id`, TC-RB-004 saves `token` via `pm.environment.set()`
+- [x] Collection run: 28 assertions, 26 pass, 2 intentional defect failures (TC-013, TC-014)
+- [x] Bonus finding: TC-RB-014 returns 500 (server crash) — severity upgraded to High
+- [x] Collection exported as v2.1 JSON → committed to `02-api-postman/`
+- [x] Newman CLI run verified (same 26/28 result, 3.9s total)
+- [x] Module README (`02-api-postman/README.md`)
+- [x] Reflection note (`docs/reflection-02.md`)
+
+**Skills demonstrated:** Postman environments, data chaining, assertion depth, dependency ordering, Newman CLI, intentional failure documentation.
 
 ---
 
@@ -65,6 +67,6 @@
 
 ## Cross-cutting
 
-- [ ] Top-level `README.md` — portfolio landing page (updated after each module ships)
-- [ ] GitHub repo created and public
-- [ ] Initial commit pushed
+- [x] Top-level `README.md` — portfolio landing page (updated after each module ships)
+- [x] GitHub repo created and public — https://github.com/docholypancake/qa-skill-lab
+- [x] Initial commit pushed

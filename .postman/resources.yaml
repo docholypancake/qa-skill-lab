@@ -1,12 +1,17 @@
 # Use this workspace to collaborate
 workspace:
-  id: 72531ef5-989e-4a0a-80c5-50c52409a3e4
+  id: 263b8ccc-ed7e-4ec5-b709-94a81ed637ef
 
 localResources:
+  collections:
+    - ../02-api-postman/Booker.postman_collection.json
+  environments:
+    - ../02-api-postman/restful-booker.postman_environment.json
   docs:
     - ../01-documentation/traceability-matrix.md
-    - ../docs/reflection-01.md
-    - ../01-documentation/test-plan.md
-    - ../01-documentation/test-cases.md
-    - ../docs/progress.md
-bug-report-template.md
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ../postman/collections/Booker: adec2590-1e7d-48df-a834-1fdc0b9b2a41

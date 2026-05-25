@@ -1,18 +1,9 @@
-owner: "55171342"
-team: "16105159"
-lastUpdatedBy: "55171342"
-lastRevision: 1779722616000
 name: restful-booker
-color: 0
 values:
   - key: base_url
-    value: ""
-    enabled: true
+    value: ''
   - key: token
-    value: ""
-    enabled: true
+    value: ''
   - key: booking_id
-    value: ""
-    enabled: true
-createdAt: 2026-05-25T14:33:27.000Z
-updatedAt: 2026-05-25T15:23:36.000Z
+    value: ''
+color: 0
