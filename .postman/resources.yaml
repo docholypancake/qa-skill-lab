@@ -1,17 +1,18 @@
-# Use this workspace to collaborate
 workspace:
   id: 263b8ccc-ed7e-4ec5-b709-94a81ed637ef
-
 localResources:
   collections:
     - ../02-api-postman/Booker.postman_collection.json
+    - ../postman/collections/Booker
   environments:
     - ../02-api-postman/restful-booker.postman_environment.json
+    - ../postman/environments/restful-booker.environment.yaml
   docs:
     - ../01-documentation/traceability-matrix.md
-
-# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
-
 cloudResources:
   collections:
-    ../postman/collections/Booker: adec2590-1e7d-48df-a834-1fdc0b9b2a41
+    ../postman/collections/Booker: 55171342-0d94d99b-c878-4584-8399-8048f30eb961
+    ../02-api-postman/Booker.postman_collection.json: 55171342-35d31f94-c44b-4f17-937e-f99489cfae51
+  environments:
+    ../02-api-postman/restful-booker.postman_environment.json: 55171342-e8e49787-c504-497e-991e-8e59a0cea2c9
+    ../postman/environments/restful-booker.environment.yaml: 55171342-bec461c0-23b8-4a36-a1bf-7a842467397b
