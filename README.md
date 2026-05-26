@@ -27,10 +27,10 @@ All 14 test cases executed via Postman Collection Runner and Newman CLI. 28 asse
 
 ---
 
-### ⏳ 03 — Python Automation (pytest + requests)
-*(Pending)*
+### ✅ 03 — Python Automation (pytest + requests)
+14 test cases in pytest. Shared fixtures with `yield` teardown, session/module/function scoping, and `xfail` markers for known defects. CI via GitHub Actions.
 
-Same Restful-Booker endpoints reimplemented in pytest. Fixtures for auth and booking lifecycle. Meaningful assertions — not just status codes.
+→ [View module](03-python-automation/README.md)
 
 ---
 

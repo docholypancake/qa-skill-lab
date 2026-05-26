@@ -32,15 +32,19 @@
 
 ---
 
-## Module 03 — Python Automation (pytest + requests) ⏳ Pending
+## Module 03 — Python Automation (pytest + requests) ✅ Complete
 
-- [ ] Virtual environment set up
-- [ ] `requirements.txt` (pytest, requests, python-dotenv)
-- [ ] Same endpoints as Module 2 reimplemented in pytest
-- [ ] Fixtures for auth token and booking lifecycle
-- [ ] Module README
-- [ ] Reflection note
-- [ ] GitHub Actions workflow
+- [x] Virtual environment set up (`03-python-automation/.venv/`)
+- [x] `requirements.txt` (pytest, requests, python-dotenv)
+- [x] All 14 test cases reimplemented in pytest across 4 test files
+- [x] `conftest.py` — shared fixtures: `base_url`, `auth_token` (session), `ping_response` (module), `booking` with yield teardown (function)
+- [x] `xfail` markers for TC-013 and TC-014 — known defect documentation
+- [x] Suite result: 14 passed, 2 xfailed
+- [x] Module README (`03-python-automation/README.md`)
+- [x] Reflection note (`docs/reflection-03.md`)
+- [x] GitHub Actions workflow (`.github/workflows/03-python-tests.yml`)
+
+**Skills demonstrated:** pytest fixtures, yield teardown, fixture scoping, fixture injection, xfail markers, virtual environments, requests library.
 
 ---
 
