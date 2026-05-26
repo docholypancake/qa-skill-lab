@@ -48,14 +48,20 @@
 
 ---
 
-## Module 04 — E2E Testing (Playwright) ⏳ Pending
+## Module 04 — E2E Testing (Playwright) ✅ Complete
 
-- [ ] Playwright installed (Python bindings)
-- [ ] Page Object Model implemented
-- [ ] E2E suite against a UI target (TBD)
-- [ ] Module README
-- [ ] Reflection note
-- [ ] GitHub Actions workflow
+- [x] Playwright installed into Module 3 venv (`pytest-playwright`, `playwright install chromium`)
+- [x] Target UI: `https://automationintesting.online/` (Shady Meadows B&B — Restful-Booker frontend)
+- [x] `HomePage` POM — room cards (`.room-card`), contact form, Book now links
+- [x] `ReservationPage` POM — two-step flow: calendar → Reserve Now → guest form
+- [x] 5 E2E tests: TC-E2E-001 through TC-E2E-005 — all passing
+- [x] Real selector discovery via Playwright accessibility tree (SPA — static HTML useless)
+- [x] Root `conftest.py` — fixes VSCode test extension `sys.path` for POM imports
+- [x] Module README (`04-e2e-playwright/README.md`)
+- [x] Reflection note (`docs/reflection-04.md`)
+- [x] GitHub Actions workflow (`.github/workflows/04-e2e-tests.yml`)
+
+**Skills demonstrated:** POM, role-based locators, `exact=True` case-sensitive matching, SPA networkidle handling, multi-step flow testing, live DOM selector discovery.
 
 ---
 

@@ -34,10 +34,10 @@ All 14 test cases executed via Postman Collection Runner and Newman CLI. 28 asse
 
 ---
 
-### ⏳ 04 — End-to-End Testing (Playwright)
-*(Pending)*
+### ✅ 04 — End-to-End Testing (Playwright)
+5 E2E tests against Shady Meadows B&B UI. Page Object Model with role-based locators, SPA handling (`networkidle`), and multi-step booking flow assertion.
 
-Playwright with Python bindings, Page Object Model.
+→ [View module](04-e2e-playwright/README.md)
 
 ---
 

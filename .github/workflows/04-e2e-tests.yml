@@ -1,0 +1,33 @@
+name: Module 04 — Playwright E2E Tests
+
+on:
+  push:
+    paths:
+      - "04-e2e-playwright/**"
+  pull_request:
+    paths:
+      - "04-e2e-playwright/**"
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r 04-e2e-playwright/requirements.txt
+
+      - name: Install Playwright browsers
+        run: playwright install chromium --with-deps
+
+      - name: Run E2E tests
+        run: |
+          pytest 04-e2e-playwright/tests/ -v --tb=short
