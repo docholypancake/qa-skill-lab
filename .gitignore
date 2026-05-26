@@ -25,6 +25,9 @@ build/
 # Node (Newman)
 node_modules/
 
+# Editor
+.vscode/
+
 # Test artifacts
 *.log
 test-results/
