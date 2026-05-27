@@ -1,5 +1,8 @@
+import pytest
 import requests
 
+
+@pytest.mark.smoke
 def test_create_booking_returns_id(booking):
 	assert isinstance(booking, int)
 	assert booking > 0

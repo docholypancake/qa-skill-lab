@@ -65,13 +65,15 @@
 
 ---
 
-## Module 05 — Smoke Tests ⏳ Pending
+## Module 05 — Smoke Tests ✅ Complete
 
-- [ ] Critical-path subset curated from Modules 3 & 4
-- [ ] Fast, CI-first suite
-- [ ] Module README
-- [ ] Reflection note
-- [ ] GitHub Actions workflow — triggers on every push
+- [x] `@pytest.mark.smoke` markers added to 3 API tests (health, auth, booking create) and 2 UI tests (homepage load, rooms displayed)
+- [x] Root `pytest.ini` — collects from both `03-python-automation/tests` and `04-e2e-playwright/tests` in one run
+- [x] `TIMEOUT = 10` added to all `requests` calls — fail-fast instead of infinite Heroku cold-start hangs
+- [x] `pytest -m smoke -x -v` — stop on first failure, all 5 smoke tests pass
+- [x] Module README (`05-smoke-tests/README.md`)
+- [x] Reflection note (`docs/reflection-05.md`)
+- [x] GitHub Actions workflow (`.github/workflows/05-smoke.yml`) — triggers on every push to any branch
 
 ---
 

@@ -41,10 +41,10 @@ All 14 test cases executed via Postman Collection Runner and Newman CLI. 28 asse
 
 ---
 
-### ⏳ 05 — Smoke Tests
-*(Pending)*
+### ✅ 05 — Smoke Tests
+5 critical-path tests curated from Modules 3 & 4 via `@pytest.mark.smoke` markers. Runs on every push to any branch. Stops at first failure (`-x`). Covers: API health, auth, booking create, UI load, room listing.
 
-Fast critical-path suite curated from Modules 3 & 4. Runs on every push via GitHub Actions.
+→ [View module](05-smoke-tests/README.md)
 
 ---
 

@@ -1,5 +1,9 @@
 """TC-RB-003 — Health check (GET /ping)"""
 
+import pytest
+
+
+@pytest.mark.smoke
 def test_ping_returns_201(ping_response):
     assert ping_response.status_code == 201
 

@@ -1,0 +1,31 @@
+name: Module 05 — Smoke Tests (every push)
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r 03-python-automation/requirements.txt
+
+      - name: Install Playwright browsers
+        run: playwright install chromium --with-deps
+
+      - name: Run smoke suite
+        env:
+          BASE_URL: https://restful-booker.herokuapp.com
+          USERNAME: admin
+          PASSWORD: password123
+        run: |
+          pytest -m smoke -x -v --tb=short

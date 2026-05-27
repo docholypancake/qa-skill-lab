@@ -4,6 +4,7 @@ import pytest
 from pages.home_page import HomePage
 
 
+@pytest.mark.smoke
 def test_homepage_loads(page):
     """TC-E2E-001: Navigating to the site renders without errors."""
     home = HomePage(page)
@@ -12,6 +13,7 @@ def test_homepage_loads(page):
     assert "Shady Meadows" in page.inner_text("body")
 
 
+@pytest.mark.smoke
 def test_rooms_are_displayed(page):
     """TC-E2E-002: At least one room card is visible after page load."""
     home = HomePage(page)
