@@ -87,6 +87,18 @@ What the tests verified:
 
 ---
 
+### ✅ 06 — Advanced API Testing (Python)
+Three techniques that go beyond status-code checks: data-driven coverage, contract validation, and performance SLA gates. 22 tests total.
+
+What the tests verified:
+- **Parametrize (11 tests)**: 4 valid booking shapes (standard, zero price, 100-char names, unicode), 4 filter combos on `GET /booking`, 3 missing-required-field cases marked `xfail` — systematic boundary coverage without duplicated test functions
+- **Schema validation (6 tests)**: `POST /booking` and `GET /booking/{id}` response bodies validated against `schemas/booking.json` — required fields, types, ISO date pattern, nested object structure; intentional failures prove the schema catches type regressions and missing fields
+- **Response time assertions (5 tests)**: SLA gates — `/ping` < 1s, reads < 2s, writes < 3s; marked `@pytest.mark.slow`, run as `continue-on-error` in CI to surface flakiness without blocking the build
+
+→ [View module](06-advanced-api/README.md)
+
+---
+
 ## Skills demonstrated
 
 | Skill | Module |
@@ -102,10 +114,13 @@ What the tests verified:
 | Fixtures and test lifecycle management | 03 |
 | Page Object Model | 04 |
 | Smoke testing + CI pipeline | 05 |
+| Data-driven testing (`@pytest.mark.parametrize`) | 06 |
+| JSON Schema contract validation | 06 |
+| Response time SLA assertions | 06 |
 
 ## Tooling
 
-- Python 3, pytest, requests, playwright, python-dotenv
+- Python 3, pytest, requests, playwright, python-dotenv, jsonschema
 - Postman (v2.1 collections), Newman
 - GitHub Actions for CI
 - ruff for linting

@@ -1,0 +1,42 @@
+name: Module 06 — Advanced API Tests
+
+on:
+  push:
+    paths:
+      - "06-advanced-api/**"
+  pull_request:
+    paths:
+      - "06-advanced-api/**"
+  workflow_dispatch:
+
+jobs:
+  advanced-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r 06-advanced-api/requirements.txt
+
+      - name: Run advanced API tests (skip slow timing tests in CI)
+        env:
+          BASE_URL: https://restful-booker.herokuapp.com
+          USERNAME: admin
+          PASSWORD: password123
+        run: |
+          cd 06-advanced-api && pytest tests/ -v --tb=short -m "not slow"
+
+      - name: Run slow timing tests separately (allowed to fail on flaky network)
+        env:
+          BASE_URL: https://restful-booker.herokuapp.com
+          USERNAME: admin
+          PASSWORD: password123
+        run: |
+          cd 06-advanced-api && pytest tests/ -v --tb=short -m slow
+        continue-on-error: true

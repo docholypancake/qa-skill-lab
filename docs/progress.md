@@ -77,6 +77,20 @@
 
 ---
 
+## Module 06 — Advanced API Testing ⏳ In Progress
+
+- [x] `tests/conftest.py` — base_url, auth_token, booking fixtures (same pattern as module 03)
+- [x] `schemas/booking.json` — JSON Schema: required fields, types, date format pattern, nested bookingdates
+- [x] `tests/test_parametrize.py` — 11 parametrized tests: valid payloads (4), filter combos (4), missing fields xfail (3)
+- [x] `tests/test_schema.py` — 6 schema tests: POST response, GET response, list items, intentional failures (type mismatch, missing field)
+- [x] `tests/test_performance.py` — 5 SLA tests: /ping <1s, GET <2s, POST/DELETE <3s, marked @pytest.mark.slow
+- [x] `06-advanced-api/README.md`
+- [x] GitHub Actions workflow (`.github/workflows/06-advanced-api.yml`) — slow tests in separate step with `continue-on-error`
+- [ ] Local run verified
+- [ ] Reflection note (`docs/reflection-06.md`)
+
+---
+
 ## Cross-cutting
 
 - [x] Top-level `README.md` — portfolio landing page (updated after each module ships)
